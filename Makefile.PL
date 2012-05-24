@@ -2,7 +2,7 @@ use inc::Module::Install;
 name 'Jenkins-NotificationListener';
 all_from 'lib/Jenkins/NotificationListener.pm';
 
-requires 'Net::Jenkins';
+requires 'Net::Jenkins' => 0.03;
 requires 'Moose';
 requires 'methods';
 requires 'JSON::XS';
