@@ -11,7 +11,6 @@ use AnyEvent::Socket;
 use Moose;
 use methods;
 use JSON::XS;
-use Try::Tiny;
 
 has host => (is => 'rw');
 

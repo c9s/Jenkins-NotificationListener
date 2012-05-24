@@ -19,7 +19,7 @@ my $payload = Jenkins::Notification->new(
         phase => "STARTED",
         status => "FAILED",
         url => "job/jruby-git/" . $build_id,
-        fullUrl => $build_url,
+        full_url => $build_url,
         parameters => {
             branch => 'master'
         }

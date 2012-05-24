@@ -29,13 +29,13 @@ tcp_connect "localhost", 8888, sub {
     print $fh <<'JSON';
 {
     "name": "jruby-git",
-    "url": "http://ci.jruby.org/job/jruby-git",
+    "url": "job/jruby-git",
     "build":{
         "number": 4259,
         "phase": "STARTED",
         "status": "FAILED",
         "url": "/job/jruby-git/4259",
-        "fullUrl": "http://ci.jruby.org/job/jruby-git/4259",
+        "full_url": "http://ci.jruby.org/job/jruby-git/4259",
         "parameters":{
             "branch":"master"
         }
