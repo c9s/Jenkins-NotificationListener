@@ -4,7 +4,7 @@ LOG_DIR=logs
 # enable profiler
 PERL5DB:='use Devel::NYTProf'
 NYTPROF:=start=begin:file=nytprof.out
-PERL5LIB:="lib:t/lib:t/*/lib:local/lib:$${PERL5LIB}"
+PERL5LIB:="lib:t/lib:t/*/lib:local/lib/perl5:$${PERL5LIB}"
 PERL_TEST_HARNET_DUMP_TAP:=$(LOG_DIR)
 TEST_VERBOSE:=1
 SHELL=/bin/bash
@@ -12,8 +12,11 @@ SHELL=/bin/bash
 all: clean prepare build tests coverage nytprof
 
 clean:
-	if [[ -e Makefile ]] ; then make realclean ; fi
+	if [[ -e Makefile ]] ; then make -k realclean ; fi
 	rm -vf nytprof.out Makefile Makefile.old;
+	rm -rf blib
+	rm -rf *.tar.gz
+	cover -delete
 
 prepare:
 	mkdir -p $(LOG_DIR)
