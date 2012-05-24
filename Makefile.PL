@@ -16,7 +16,10 @@ author_tests 'xt';
 
 install_script 'scripts/jenkins-notification-listener.pl';
 
-test_requires 'Test::More' => 0, 'LWP::Simple' => 0;
+test_requires 'Test::More' => 0,
+    'LWP::Simple' => 0,
+    'Time::HiRes' => 0,
+    ;
 
 # auto_set_repository;
 auto_include;
