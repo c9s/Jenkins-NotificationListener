@@ -20,6 +20,7 @@ clean:
 
 prepare:
 	mkdir -p $(LOG_DIR)
+	perl -V
 
 build:
 	perl Makefile.PL && make
