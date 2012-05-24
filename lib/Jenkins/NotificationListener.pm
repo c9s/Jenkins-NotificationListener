@@ -81,6 +81,12 @@ To test your Jenkins notification plugin, you can also use L<jenkins-notificatio
 
     $ jenkins-notification-listener.pl
 
+=head1 INSTALLATION
+
+    $ cpan Jenkins::Notification
+
+    $ cpanm Jenkins::Notification
+
 =head1 AUTHOR
 
 Yo-An Lin E<lt>cornelius.howl {at} gmail.comE<gt>
