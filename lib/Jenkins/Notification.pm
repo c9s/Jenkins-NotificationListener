@@ -22,6 +22,8 @@ has phase => ( is => 'rw' , isa => 'Str' );
 
 has parameters => ( is => 'rw' );
 
+has api => ( is => 'rw', isa => 'Net::Jenkins' );
+
 sub BUILDARGS {
     my ($self,%args) = @_;
 
@@ -31,12 +33,9 @@ sub BUILDARGS {
     my $build_url = $build_args->{fullUrl};
 
     $args{build} = build_build_object $build_url;
-
     $args{status} = $build_args->{status};
     $args{phase} = $build_args->{phase};
-
-    # use Data::Dumper; warn Dumper( \%args );
-    # build JOB, BUILD objects
+    $args{api} = $args{build}->_api;
     return \%args;
 }
 

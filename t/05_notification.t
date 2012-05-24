@@ -27,5 +27,11 @@ my $payload = Jenkins::Notification->new(
 );
 
 ok $payload;
+ok $payload->name;
+ok $payload->job;
+ok $payload->build;
+
+isa_ok $payload->job, 'Net::Jenkins::Job';
+isa_ok $payload->build, 'Net::Jenkins::Job::Build';
 
 done_testing;
