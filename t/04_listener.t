@@ -11,6 +11,10 @@ Jenkins::NotificationListener->new( host => undef , port => 8888 , on_notify => 
     $cv->send;
 
     ok $payload;
+    is $payload->status, 'FAILED';
+    is $payload->phase, 'STARTED';
+    isa_ok $payload->job, 'Net::Jenkins::Job';
+    isa_ok $payload->build, 'Net::Jenkins::Job::Build';
 
 })->start;
 
@@ -24,14 +28,14 @@ tcp_connect "localhost", 8888, sub {
 
     print $fh <<'JSON';
 {
-    "name":"JobName",
-    "url":"JobUrl",
+    "name": "jruby-git",
+    "url": "http://ci.jruby.org/job/jruby-git",
     "build":{
-        "number": 1,
+        "number": 4259,
         "phase": "STARTED",
         "status": "FAILED",
-        "url":"job/project/5",
-        "fullUrl":"http://ci.jenkins.org/job/project/5",
+        "url": "/job/jruby-git/4259",
+        "fullUrl": "http://ci.jruby.org/job/jruby-git/4259",
         "parameters":{
             "branch":"master"
         }

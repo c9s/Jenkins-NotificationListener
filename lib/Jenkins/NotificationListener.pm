@@ -6,6 +6,7 @@ our $VERSION = '0.01';
 use Net::Jenkins;
 use Net::Jenkins::Job;
 use Net::Jenkins::Job::Build;
+use Jenkins::Notification;
 use AnyEvent::Socket;
 use Moose;
 use methods;
@@ -33,8 +34,8 @@ method start {
         eval {
             if( $content ) {
                 my $json = decode_json $content;
-                use Data::Dumper; warn Dumper( $json );
-                $self->on_notify->( $json );
+                my $payload = Jenkins::Notification->new( %$json );
+                $self->on_notify->( $payload );
             } else {
                 die 'Empty content';
             }

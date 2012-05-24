@@ -33,6 +33,7 @@ sub BUILDARGS {
     my $build_url = $build_args->{fullUrl};
 
     $args{build} = build_build_object $build_url;
+
     $args{status} = $build_args->{status};
     $args{phase} = $build_args->{phase};
     $args{api} = $args{build}->_api;
