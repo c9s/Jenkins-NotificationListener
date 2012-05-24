@@ -19,6 +19,7 @@ tcp_connect "localhost", 8888, sub {
     my ($fh) = @_
         or die "localhost failed: $!";
 
+    ok $fh;
 
     print $fh <<'JSON';
 {
