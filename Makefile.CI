@@ -13,9 +13,7 @@ all: clean prepare build tests coverage nytprof
 
 clean:
 	if [[ -e Makefile ]] ; then make -k realclean ; fi
-	rm -vf nytprof.out Makefile Makefile.old;
-	rm -rf blib
-	rm -rf *.tar.gz
+	rm -vf nytprof.out Makefile Makefile.old blib *.tar.gz
 	cover -delete
 
 prepare:
