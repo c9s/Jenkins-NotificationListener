@@ -12,6 +12,8 @@ requires 'Try::Tiny';
 tests 't/*.t';
 author_tests 'xt';
 
+install_script 'scripts/jenkins-notification-listener.pl';
+
 test_requires 'Test::More';
 
 # auto_set_repository;

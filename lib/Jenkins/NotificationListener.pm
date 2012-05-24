@@ -33,8 +33,8 @@ method start {
         }
         eval {
             if( $content ) {
-                my $json = decode_json $content;
-                my $payload = Jenkins::Notification->new( %$json );
+                my $args = decode_json $content;
+                my $payload = Jenkins::Notification->new( %$args , raw_json => $content );
                 $self->on_notify->( $payload );
             } else {
                 die 'Empty content';
