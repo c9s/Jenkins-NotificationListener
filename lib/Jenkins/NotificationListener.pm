@@ -50,15 +50,36 @@ __END__
 
 =head1 NAME
 
-Jenkins::NotificationListener -
+Jenkins::NotificationListener - is a TCP server that listens to messages from Jenkins Notification plugin.
 
 =head1 SYNOPSIS
 
-  use Jenkins::NotificationListener;
+    use Jenkins::NotificationListener;
+    Jenkins::NotificationListener->new( host => $host , port => $port , on_notify => sub {
+        my $payload = shift;   # Jenkins::Notification;
+        print $payload->name , " #" , $payload->build->number, " : " , $payload->status 
+                    , " : " , $payload->phase
+                    , " : " , $payload->url
+                    , "\n";
+
+    })->start;
 
 =head1 DESCRIPTION
 
-Jenkins::NotificationListener is
+Jenkins::NotificationListener is a simple TCP server listens to messages from Jenkins' Notification plugin,
+
+L<Jenkins::NotificationListener> uses L<AnyEvent::Socket> to create tcp server object, so it's a non-blocking implementation.
+
+This tcp server reads JSON format notification from Jenkins Notification plugin, and creates payload object L<Jenkins::Notification>.
+the payload object is built with L<Net::Jenkins::Job>,
+L<Net::Jenkins::Job::Build> objects from the information that is provided from
+notification json.
+
+By using L<Jenkins::NotificationListener>, you can simple use the payload object to interact with Jenkins server.
+
+To test your Jenkins notification plugin, you can also use L<jenkins-notification-listener.pl> script.
+
+    $ jenkins-notification-listener.pl
 
 =head1 AUTHOR
 

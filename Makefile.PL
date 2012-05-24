@@ -14,6 +14,9 @@ requires 'URI';
 tests 't/*.t';
 author_tests 'xt';
 
+readme_markdown_from_pod 'lib/Jenkins/NotificationListener.pm';
+readme_from_pod 'lib/Jenkins/NotificationListener.pm';
+
 install_script 'scripts/jenkins-notification-listener.pl';
 
 test_requires 'Test::More' => 0,

@@ -1,27 +1,43 @@
-This is Perl module Jenkins::NotificationListener.
+NAME
+    Jenkins::NotificationListener - is a TCP server that listens to messages
+    from Jenkins Notification plugin.
 
-INSTALLATION
+SYNOPSIS
+        use Jenkins::NotificationListener;
+        Jenkins::NotificationListener->new( host => $host , port => $port , on_notify => sub {
+            my $payload = shift;   # Jenkins::Notification;
+            print $payload->name , " #" , $payload->build->number, " : " , $payload->status 
+                        , " : " , $payload->phase
+                        , " : " , $payload->url
+                        , "\n";
 
-Jenkins::NotificationListener installation is straightforward. If your CPAN shell is set up,
-you should just be able to do
+        })->start;
 
-    % cpan Jenkins::NotificationListener
+DESCRIPTION
+    Jenkins::NotificationListener is a simple TCP server listens to messages
+    from Jenkins' Notification plugin,
 
-Download it, unpack it, then build it as per the usual:
+    Jenkins::NotificationListener uses AnyEvent::Socket to create tcp server
+    object, so it's a non-blocking implementation.
 
-    % perl Makefile.PL
-    % make && make test
+    This tcp server reads JSON format notification from Jenkins Notification
+    plugin, and creates payload object Jenkins::Notification. the payload
+    object is built with Net::Jenkins::Job, Net::Jenkins::Job::Build objects
+    from the information that is provided from notification json.
 
-Then install it:
+    By using Jenkins::NotificationListener, you can simple use the payload
+    object to interact with Jenkins server.
 
-    % make install
+    To test your Jenkins notification plugin, you can also use
+    jenkins-notification-listener.pl script.
 
-DOCUMENTATION
+        $ jenkins-notification-listener.pl
 
-Jenkins::NotificationListener documentation is available as in POD. So you can do:
+AUTHOR
+    Yo-An Lin <cornelius.howl {at} gmail.com>
 
-    % perldoc Jenkins::NotificationListener
+SEE ALSO
+LICENSE
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
 
-to read the documentation online with your favorite pager.
-
-Yo-An Lin
