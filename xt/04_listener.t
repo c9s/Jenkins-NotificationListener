@@ -11,6 +11,7 @@ Jenkins::NotificationListener->new( host => undef , port => 8888 , on_notify => 
     $cv->send;
 
     ok $payload;
+
 })->start;
 
 usleep 1000;

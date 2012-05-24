@@ -30,10 +30,10 @@ method start {
         while( my $bytes = sysread $fh, $buf, 1024 ) {
             $content .= $buf;
         }
-
         eval {
             if( $content ) {
                 my $json = decode_json $content;
+                use Data::Dumper; warn Dumper( $json );
                 $self->on_notify->( $json );
             } else {
                 die 'Empty content';
