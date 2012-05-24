@@ -34,5 +34,5 @@ coverage:
 
 nytprof:
 	NYTPROF=start=begin:file=nytprof.out; 
-	perl -Ilib -d:NYTProf t/*.t 
+	perl -Ilocal/lib/perl5 -Ilib -d:NYTProf t/*.t 
 	nytprofhtml
