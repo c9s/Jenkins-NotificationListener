@@ -33,10 +33,17 @@ DESCRIPTION
 
         $ jenkins-notification-listener.pl
 
+INSTALLATION
+        $ cpan Jenkins::Notification
+
+        $ cpanm Jenkins::Notification
+
 AUTHOR
     Yo-An Lin <cornelius.howl {at} gmail.com>
 
 SEE ALSO
+    Net::Jenkins
+
 LICENSE
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
