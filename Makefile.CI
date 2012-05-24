@@ -25,7 +25,7 @@ build:
 	cpanm -f --local-lib=local --installdeps .
 
 tests: build
-	HARNESS_PERL_SWITCHES=-MDevel::Cover=+ignore,inc prove -lv --formatter TAP::Formatter::JUnit t \
+	HARNESS_PERL_SWITCHES=-MDevel::Cover=+ignore,inc prove -Ilocal/lib/perl5 -lv --formatter TAP::Formatter::JUnit t \
 						2>&1 > $(LOG_DIR)/tests.xml
 
 coverage:
