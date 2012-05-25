@@ -45,3 +45,42 @@ sub BUILDARGS {
 }
 
 1;
+__END__
+
+=head1 NAME
+
+Jenkins::Notification
+
+=head1 ATTRIBUTES
+
+=head2 name (Str)
+
+Job name
+
+=head2 url (Str)
+
+Job url
+
+=head2 build
+
+L<Net::Jenkins::Job::Build> object
+
+=head2 job
+
+L<Net::Jenkins::Job> object
+
+=head2 status (Str)
+
+Build Status
+
+=head2 phase (Str)
+
+Build Phase
+
+=head2 parameters (HashRef)
+
+=head2 api
+
+L<Net::Jenkins> object
+
+=cut
