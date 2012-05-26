@@ -89,6 +89,14 @@ To test your Jenkins notification plugin, you can also use L<jenkins-notificatio
 
     $ jenkins-notification-listener.pl
 
+=head1 EXPORTED FUNCTION
+
+    use Jenkins::NotificationListener;   # export parse_jenkins_notification function
+    my $notification = parse_jenkins_notification($json);
+    $notification;   # Jenkins::Notification object
+    $notification->job;
+    $notification->build;
+
 =head1 INSTALLATION
 
     $ cpan Jenkins::Notification
