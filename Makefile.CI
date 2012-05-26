@@ -15,6 +15,7 @@ clean:
 	if [[ -e Makefile ]] ; then make -k realclean ; fi
 	rm -vf nytprof.out Makefile Makefile.old blib *.tar.gz
 	cover -delete
+	rm -rf local
 
 prepare:
 	mkdir -p $(LOG_DIR)
