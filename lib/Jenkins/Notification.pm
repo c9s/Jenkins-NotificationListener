@@ -40,7 +40,7 @@ sub BUILDARGS {
 
     $args{status} = $build_args->{status} if $build_args->{status};
     $args{phase} = $build_args->{phase} if $build_args->{phase};
-    $args{api} = $args{build}->_api;
+    $args{api} = $args{build}->api;
     return \%args;
 }
 
