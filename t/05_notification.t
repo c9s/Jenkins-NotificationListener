@@ -1,10 +1,12 @@
 #!/usr/bin/env perl
 use Test::More;
 use Jenkins::Notification;
+use Jenkins::NotificationListener;
 use LWP::Simple qw(get);
+use File::Read;
 use JSON::XS;
 
-my $json = decode_json get 'http://ci.jruby.org/job/jruby-git/api/json';
+my $json = decode_json read_file 't/data/job.json';
 my $build_id = $json->{lastBuild}->{number};
 my $build_url = $json->{lastBuild}->{url};
 ok $json;
@@ -33,5 +35,12 @@ ok $payload->build;
 
 isa_ok $payload->job, 'Net::Jenkins::Job';
 isa_ok $payload->build, 'Net::Jenkins::Job::Build';
+
+my $json = read_file 't/data/notification.json';
+
+my $notification = parse_jenkins_notification($json);
+ok $notification;
+ok $notification->job;
+ok $notification->build;
 
 done_testing;
