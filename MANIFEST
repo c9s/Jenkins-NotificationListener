@@ -27,6 +27,8 @@ scripts/jenkins-notification-listener.pl
 t/00_compile.t
 t/04_listener.t
 t/05_notification.t
+t/data/job.json
+t/data/notification.json
 xt/01_podspell.t
 xt/02_perlcritic.t
 xt/03_pod.t
