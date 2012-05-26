@@ -21,6 +21,7 @@ install_script 'scripts/jenkins-notification-listener.pl';
 
 test_requires 'Test::More' => 0,
     'LWP::Simple' => 0,
+    'File::Read' => 0,
     'Time::HiRes' => 0,
     ;
 
