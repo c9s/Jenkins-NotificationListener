@@ -1,5 +1,8 @@
 Revision history for Perl extension Jenkins::NotificationListener
 
+0.04    六  5/26 11:19:31 2012
+        - Rename _api to api for Net::Jenkins 0.04
+
 0.03    六  5/26 11:05:27 2012
         - Export parse_jenkins_notification function
 
