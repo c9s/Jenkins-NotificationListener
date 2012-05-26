@@ -42,5 +42,6 @@ my $notification = parse_jenkins_notification($json);
 ok $notification;
 ok $notification->job;
 ok $notification->build;
+ok $notification->to_hashref;
 
 done_testing;

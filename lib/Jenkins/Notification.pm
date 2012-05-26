@@ -44,6 +44,19 @@ sub BUILDARGS {
     return \%args;
 }
 
+sub to_hashref {
+    my $self = shift;
+    return {
+        name => $self->name,
+        url => $self->url,
+        build => $self->build->to_hashref,
+        job => $self->job->to_hashref,
+        status => $self->status,
+        phase => $self->phase,
+        parameters => $self->parameters,
+    };
+}
+
 1;
 __END__
 
