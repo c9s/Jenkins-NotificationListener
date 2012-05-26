@@ -1,5 +1,8 @@
 Revision history for Perl extension Jenkins::NotificationListener
 
+0.03    六  5/26 11:05:27 2012
+        - Export parse_jenkins_notification function
+
 0.02    五  5/25 13:03:08 2012
         - Update pod
 
