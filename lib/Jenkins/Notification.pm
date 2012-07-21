@@ -45,12 +45,12 @@ sub BUILDARGS {
 }
 
 sub to_hashref {
-    my $self = shift;
+    my ($self,$with_details) = @_;
     return {
         name => $self->name,
         url => $self->url,
-        build => $self->build->to_hashref,
-        job => $self->job->to_hashref,
+        build => $self->build->to_hashref( $with_details ),
+        job => $self->job->to_hashref( $with_details ),
         status => $self->status,
         phase => $self->phase,
         parameters => $self->parameters,
