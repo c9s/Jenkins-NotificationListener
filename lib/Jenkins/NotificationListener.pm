@@ -41,8 +41,9 @@ method start {
         }
         eval {
             if( $json ) {
-                my $payload = parse_jenkins_notification($json);
-                $self->on_notify->( $payload );
+                $self->on_notify->( 
+                    parse_jenkins_notification($json)
+                );
             } else {
                 die 'Request body is empty.';
             }
