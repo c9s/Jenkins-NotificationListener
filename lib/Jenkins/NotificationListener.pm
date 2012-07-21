@@ -1,7 +1,7 @@
 package Jenkins::NotificationListener;
 use strict;
 use warnings;
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 use Net::Jenkins;
 use Net::Jenkins::Job;
@@ -31,8 +31,8 @@ sub parse_jenkins_notification {
     return Jenkins::Notification->new( %$args , raw_json => $json );
 }
 
-method start {
-    tcp_server $self->host, $self->port , sub {
+method start ($prepare_cb) {
+    return tcp_server $self->host, $self->port , sub {
         my ($fh, $host, $port) = @_;
         my $json = '';
         my $buf = '';
@@ -51,7 +51,7 @@ method start {
         if ( $@ ) {
             $self->on_error->( $@ );
         }
-    };
+    }, $prepare_cb;
 }
 
 1;

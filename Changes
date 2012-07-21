@@ -1,5 +1,8 @@
 Revision history for Perl extension Jenkins::NotificationListener
 
+0.06    六  7/21 10:10:41 2012
+        - with_details flag
+
 0.05    六  5/26 12:12:08 2012
         - Add to_hashref method
 
